@@ -1,4 +1,16 @@
 import { characters } from "./characters";
 
-// Write your announceCharacter function here! ✨
-// You'll need to export it so the tests can run it.
+interface character {
+	name: string;
+	powers: string[];
+	side: "good" | "evil";
+}
+
+export function announceCharacter(rawData: string) {
+	const parsedData = JSON.parse(rawData) as character;
+	const { name, powers, side } = parsedData;
+	console.log(`I am ${name}.`);
+	console.log(`My powers are: ${powers.join(", ")}.`);
+	console.log(`I am ${side}.`);
+	return parsedData;
+}
